@@ -13,8 +13,8 @@ function Home() {
                 <div class="row">
                     <div class="col-1"></div>
                     <div class="col-5">
-                        <h1 class="fs-1 fw-bold">Livraria Capa Amarela, site feito para testar as funcionalidades de uma REST API feita com Spring Boot</h1>
-                        <a href="https://github.com/lucasraulinosilva/ApiLivraria" target="_blank"><button class="btn btn-lg mt-4 vejaMais fs-2 fw-bold rounded-pill p-3 ps-3 pe-3">Saiba Mais</button></a>
+                        <h1 class="fs-1 fw-bold">Livraria Capa Amarela, site feito para testar as funcionalidades de uma aplicação React</h1>
+                        <a href="https://github.com/lucasraulinosilva/LivrariaCapaAmarelaReact" target="_blank"><button class="btn btn-lg mt-4 vejaMais fs-2 fw-bold rounded-pill p-3 ps-3 pe-3">Saiba Mais</button></a>
                     </div>
                     <div class="col-5">
                         <img src={livro} alt="" class="mx-auto d-block" width="500px" />

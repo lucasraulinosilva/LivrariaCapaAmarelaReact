@@ -12,7 +12,7 @@ function DeletarLivros() {
       }
   
       if (window.confirm('Tem certeza que deseja deletar este livro?')) {
-        axios.delete(`http://localhost:3001/livros/${id}`)
+        axios.delete(`https://livrariacapaamarelareact.onrender.com/livros/${id}`)
           .then((response) => {
             setStatus('Livro deletado com sucesso!');
             setId('');  // Limpa o campo de ID após a exclusão

@@ -17,7 +17,7 @@ function AtualizarLivros() {
         }
     
         try {
-          const response = await axios.get(`http://localhost:3001/livros/${id}`);
+          const response = await axios.get(`https://livrariacapaamarelareact.onrender.com/livros/${id}`);
           setNome(response.data.nome);
           setAutor(response.data.autor);
           setTema(response.data.tema);
@@ -38,7 +38,7 @@ function AtualizarLivros() {
         }
     
         try {
-          await axios.put(`http://localhost:3001/livros/${id}`, {
+          await axios.put(`https://livrariacapaamarelareact.onrender.com/livros/${id}`, {
             nome,
             autor,
             tema,

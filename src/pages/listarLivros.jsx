@@ -15,7 +15,7 @@ function ListarLivros() {
     });
 
     useEffect(() => {
-        axios.get('http://localhost:3001/livros')
+        axios.get('https://livrariacapaamarelareact.onrender.com/livros')
             .then((res) => {
                 setLivros(res.data);
             })

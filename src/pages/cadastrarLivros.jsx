@@ -10,7 +10,7 @@ function CadastrarLivros() {
         e.preventDefault();
     
         try {
-          await axios.post('http://localhost:3001/livros', {
+          await axios.post('https://livrariacapaamarelareact.onrender.com/livros', {
             nome,
             autor,
             tema,
