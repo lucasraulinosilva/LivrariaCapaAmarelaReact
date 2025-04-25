@@ -23,6 +23,8 @@ function ListarLivros() {
                 console.error('Erro ao buscar livros:', err);
             });
     }, []);
+
+    console.log(livros)
     return (
         <>
 
