@@ -38,7 +38,7 @@ function AtualizarLivros() {
         }
     
         try {
-          await axios.put(`https://livrariacapaamarelareact.onrender.com/livros/${id}`, {
+          await axios.put(`https://apilivrariareact.onrender.com/livros${id}`, {
             nome,
             autor,
             tema,
