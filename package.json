@@ -7,8 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "serve": "serve dist -p $PORT"
+    "preview": "vite preview --port 10000"
   },
   "dependencies": {
     "axios": "^1.9.0",
