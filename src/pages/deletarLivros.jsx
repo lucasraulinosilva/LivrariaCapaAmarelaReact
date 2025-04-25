@@ -12,7 +12,7 @@ function DeletarLivros() {
       }
   
       if (window.confirm('Tem certeza que deseja deletar este livro?')) {
-        axios.delete(`https://apilivrariareact.onrender.com/livros${id}`)
+        axios.delete(`https://apilivrariareact.onrender.com/livros/${id}`)
           .then((response) => {
             setStatus('Livro deletado com sucesso!');
             setId('');  // Limpa o campo de ID após a exclusão
@@ -38,7 +38,6 @@ function DeletarLivros() {
 
             <div class="container col-4 mt-5 text-center">
                 <h1 class="fw-bold func">Modo de uso</h1>
-                <img src="../imgs/excluir.png" alt="" class="mx-auto d-block mb-4 mt-4" width="80px" />
                 <p>Digite o id do livro, e aperte o botão de Deletar livro, caso não saiba o id clique <a href="/listarLivros">aqui</a>.</p>
             </div>
         </>

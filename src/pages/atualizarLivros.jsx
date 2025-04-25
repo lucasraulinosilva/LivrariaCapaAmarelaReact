@@ -38,7 +38,7 @@ function AtualizarLivros() {
         }
     
         try {
-          await axios.put(`https://apilivrariareact.onrender.com/livros${id}`, {
+          await axios.put(`https://apilivrariareact.onrender.com/livros/${id}`, {
             nome,
             autor,
             tema,
@@ -76,7 +76,6 @@ function AtualizarLivros() {
 
             <div class="container col-4 mt-5 text-center">
                 <h1 class="fw-bold func">Modo de uso</h1>
-                <img src="../imgs/atualizar.png" alt="" class="mx-auto d-block mb-4 mt-4" width="80px" />
                 <p>Digite as informações a serem alteradas do livro, o id não pode ser alterado, e aperte o botão de Deletar livro, caso não saiba o id clique <a href="/listarLivros">aqui</a>.</p>
             </div>
         </>

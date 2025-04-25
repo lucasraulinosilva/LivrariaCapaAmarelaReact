@@ -46,7 +46,6 @@ function CadastrarLivros() {
 
             <div class="container col-4 mt-5 text-center">
                 <h1 class="fw-bold func">Modo de uso</h1>
-                <img src="../imgs/criar.png" alt="" class="mx-auto d-block mb-4 mt-4" width="80px" />
                 <p>Digite o nome, autor e tema do livro, e aperte o botão de Cadastrar livro.</p>
             </div>
         </>
