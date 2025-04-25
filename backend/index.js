@@ -1,7 +1,8 @@
 const express = require('express');
-const mysql = require('mysql2');
+import sql from 'mssql';
 const cors = require('cors');
 
+const router = express.Router();
 
 const app = express();
 app.use(cors());
@@ -19,49 +20,70 @@ const db = mysql.createConnection({
   },
 });
 
-db.connect((err) => {
-  if (err) {
-    console.log('Erro na conexão com MySQL:', err);
-  } else {
-    console.log('Conectado ao MySQL!');
+const pool = new sql.ConnectionPool(db);
+const poolConnect = pool.connect();
+
+pool.on('error', err => {
+  console.error('Erro no pool de conexão:', err);
+});
+
+router.get('/', async (req, res) => {
+  try {
+    await poolConnect;
+    const result = await new sql.Request().query('SELECT * FROM Livros');
+    res.json(result.recordset);
+  } catch (err) {
+    console.error('Erro ao listar livros:', err);
+    res.status(500).send('Erro ao listar livros');
   }
 });
 
-app.get('/livros', (req, res) => {
-  db.query('SELECT * FROM livros', (err, results) => {
-    if (err) return res.status(500).json(err);
-    return res.json(results);
-  });
-});
-
-app.post('/livros', (req, res) => {
+router.post('/', async (req, res) => {
   const { nome, autor, tema } = req.body;
-  const sql = 'INSERT INTO livros (nome, autor, tema) VALUES (?, ?, ?)';
-  db.query(sql, [nome, autor, tema], (err, result) => {
-    if (err) return res.status(500).json(err);
-    res.json({ id: result.insertId, nome, autor, tema });
-  });
+  try {
+    await poolConnect;
+    const request = new sql.Request();
+    request.input('nome', sql.VarChar, nome);
+    request.input('autor', sql.VarChar, autor);
+    request.input('tema', sql.VarChar, tema);
+    await request.query('INSERT INTO Livros (nome, autor, tema) VALUES (@nome, @autor, @tema)');
+    res.status(201).send('Livro criado com sucesso!');
+  } catch (err) {
+    console.error('Erro ao criar livro:', err);
+    res.status(500).send('Erro ao criar livro');
+  }
 });
 
-app.put('/livros/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
   const { id } = req.params;
   const { nome, autor, tema } = req.body;
-  const sql = 'UPDATE livros SET nome = ?, autor = ?, tema = ? WHERE id = ?';
-  db.query(sql, [nome, autor, tema, id], (err, result) => {
-    if (err) return res.status(500).json(err);
-    res.json({ id, nome, autor, tema });
-  });
+  try {
+    await poolConnect;
+    const request = new sql.Request();
+    request.input('id', sql.Int, parseInt(id));
+    request.input('nome', sql.VarChar, nome);
+    request.input('autor', sql.VarChar, autor);
+    request.input('tema', sql.VarChar, tema);
+    await request.query('UPDATE Livros SET nome = @nome, autor = @autor, tema = @tema WHERE id = @id');
+    res.send('Livro atualizado com sucesso!');
+  } catch (err) {
+    console.error('Erro ao atualizar livro:', err);
+    res.status(500).send('Erro ao atualizar livro');
+  }
 });
 
-app.delete('/livros/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   const { id } = req.params;
-  const sql = 'DELETE FROM livros WHERE id = ?';
-  db.query(sql, [id], (err, result) => {
-    if (err) return res.status(500).json(err);
-    res.json({ message: 'Livro deletado com sucesso' });
-  });
+  try {
+    await poolConnect;
+    const request = new sql.Request();
+    request.input('id', sql.Int, parseInt(id));
+    await request.query('DELETE FROM Livros WHERE id = @id');
+    res.send('Livro deletado com sucesso!');
+  } catch (err) {
+    console.error('Erro ao deletar livro:', err);
+    res.status(500).send('Erro ao deletar livro');
+  }
 });
 
-app.listen(3001, () => {
-  console.log('Servidor backend rodando na porta 3001');
-});
+export default router;
