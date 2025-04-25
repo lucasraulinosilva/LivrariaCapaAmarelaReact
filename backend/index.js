@@ -9,10 +9,14 @@ app.use(express.json());
 
 
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'qwe456123', 
-  database: 'teste_react' 
+  host: 'bancosql.mysql.database.azure.com',
+  user: process.env.user,
+  password: process.env.senha, 
+  port: 3306,
+  database: 'livraria',
+  ssl: {
+    rejectUnauthorized: true,
+  },
 });
 
 db.connect((err) => {
