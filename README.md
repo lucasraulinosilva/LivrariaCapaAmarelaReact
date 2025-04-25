@@ -1,12 +1,18 @@
-# React + Vite
+# 📚 Livraria React App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um projeto de uma aplicação web para gerenciamento de uma livraria, desenvolvida com **React** no frontend, **Node.js/Express** no backend e um **banco de dados SQL hospedado no Azure**.
 
-Currently, two official plugins are available:
+## 🔗 Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Frontend:** React, Axios, React Router
+- **Backend:** Node.js
+- **Banco de Dados:** Azure SQL Database
+- **Hospedagem (opcional):** Render
 
-## Expanding the ESLint configuration
+## 🚀 Funcionalidades
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Visualização de lista de livros
+- Cadastro de novos livros
+- Edição e exclusão de livros existentes
+- Filtragem por nome
+- Integração com API 
