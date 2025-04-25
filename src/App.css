@@ -1,0 +1,48 @@
+nav a {
+  color: black !important;
+}
+
+.bloco1,
+nav,
+.icone {
+  background-color: #FFB433 !important;
+}
+
+.vejaMais,
+.vejaMais:hover,
+.vejaMais:active,
+button,
+button:hover,
+button:active {
+  background-color: #80CBC4 !important;
+  color: #FBF8EF !important;
+  border: 1px solid #80CBC4 !important;
+}
+
+.func {
+  text-decoration: underline #80CBC4 5px;
+}
+
+.formulario {
+  height: 350px;
+}
+
+/* B4EBE6 */
+
+.bloco2 {
+  margin-top: 100px;
+  background-color: #80CBC4;
+}
+
+.bloco2 h2,
+.bloco2 p {
+  color: #FBF8EF;
+}
+
+.func2 {
+  text-decoration: underline #FFB433 5px;
+}
+
+Body {
+  margin: 0 !important;
+}
